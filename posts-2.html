@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b05-bh-massage-link</title>
+  <meta name="description" content="t3b05-bh-massage-link에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://banghwa-body-review.mapo-room-guide.xyz/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* RESET + BASE */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { font-size: 16px; scroll-behavior: auto; }
+ body {
+ background: #111111; /* primary */
+ color: #ffff00; /* secondary */
+ font-family: "Courier New", Courier, "Liberation Mono", monospace;
+ line-height: 1.2;
+ letter-spacing: -0.02em;
+ padding: 0;
+ margin: 0;
+ overflow-x: hidden;
+ }
+ img, svg { display: block; max-width: 100%; height: auto; }
+ a { color: #00ff41; text-decoration: underline wavy 2px #ffff00; }
+ a:hover { color: #ffff00; background: #111; text-decoration: none; }
+ strong, b { font-weight: 900; }
+ ::selection { background: #00ff41; color: #111; }
+
+ /* TYPOGRAPHY — oversized, raw, brutal */
+ h1, h2, h3 { font-weight: 900; text-transform: uppercase; letter-spacing: -0.06em; }
+ h1 { font-size: clamp(3.2rem, 8vw, 5.5rem); line-height: 0.85; }
+ h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 0.9; }
+ h3 { font-size: 1.6rem; }
+ p, li, blockquote { font-size: 1.1rem; max-width: 70ch; }
+
+ /* LAYOUT — full bleed, asymmetric, no max-width */
+ .container { max-width: 100%; padding: 24px; margin: 0; }
+ header, nav, main, footer { width: 100%; display: block; }
+
+ /* SKEW + ROTATE textures */
+ .skew-right { transform: skewX(-6deg); }
+ .skew-left { transform: skewX(4deg); }
+ .rotate-neg { transform: rotate(-2deg); }
+ .rotate-pos { transform: rotate(1.5deg); }
+
+ /* BORDERS — thick solid 3-4px */
+ .bordered { border: 3px solid #ffff00; }
+ .bordered-accent { border: 4px solid #00ff41; }
+ .bordered-bottom { border-bottom: 4px solid #ffff00; }
+ .bordered-top { border-top: 3px solid #ffff00; }
+
+ /* SPACING — dense */
+ .gap-16 { gap: 16px; }
+ .pad-24 { padding: 24px; }
+ .section-gap { margin-bottom: 40px; }
+
+ /* NAV — hamburger for mobile */
+ nav { position: sticky; top: 0; z-index: 999; background: #111; border-bottom: 4px solid #ffff00; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+ .logo { font-size: 1.8rem; font-weight: 900; color: #ffff00; text-transform: uppercase; letter-spacing: -0.06em; }
+ .nav-links { display: flex; gap: 24px; list-style: none; }
+ .nav-links a { color: #ffff00; font-weight: 700; font-size: 1.2rem; text-decoration: none; padding: 4px 8px; border: 2px solid transparent; }
+ .nav-links a:hover { border-color: #00ff41; color: #00ff41; }
+ .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 4px; border: 2px solid #ffff00; }
+ .hamburger span { display: block; width: 30px; height: 4px; background: #ffff00; }
+ #menu-toggle { display: none; }
+ #menu-toggle:checked ~ .nav-links { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #111; border-bottom: 4px solid #ffff00; padding: 16px 24px; gap: 12px; }
+
+ /* HERO */
+ .hero {
+ padding: 40px 24px 60px;
+ border-bottom: 4px solid #00ff41;
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+ position: relative;
+ }
+ .hero::before {
+ content: "⬡ ⬡ ⬡";
+ position: absolute;
+ top: -10px; left: 50%;
+ transform: translateX(-50%) rotate(4deg);
+ font-size: 2rem;
+ color: #00ff41;
+ letter-spacing: 16px;
+ }
+ .hero h1 { margin: 0; }
+ .hero .subhead {
+ font-size: 1.4rem;
+ color: #00ff41;
+ text-transform: uppercase;
+ font-weight: 700;
+ border-left: 6px solid #ffff00;
+ padding-left: 16px;
+ }
+ .hero .cta-line {
+ font-size: 1.6rem;
+ font-weight: 900;
+ background: #ffff00;
+ color: #111;
+ display: inline-block;
+ padding: 8px 24px;
+ transform: rotate(-1deg) skewX(-3deg);
+ border: 3px solid #111;
+ }
+ .hero .cta-line a { color: #111; text-decoration: none; }
+
+ /* SECTION BLOCKS */
+ section { padding: 24px; margin-bottom: 40px; }
+ .block-asymmetric { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+ .block-asymmetric > * { flex: 1 1 280px; }
+
+ /* FEATURES — brutal list */
+ .feature-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+ .feature-list li {
+ background: #111;
+ border: 3px solid #ffff00;
+ padding: 24px;
+ font-size: 1.3rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ display: flex; align-items: center; gap: 12px;
+ transform: rotate(var(--r, 0deg));
+ }
+ .feature-list li:nth-child(odd) { --r: -1deg; }
+ .feature-list li:nth-child(even) { --r: 1.5deg; }
+ .feature-list li::before { content: "➤"; color: #00ff41; font-size: 2rem; }
+
+ /* REVIEW CARDS */
+ .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+ .review-card {
+ background: #111;
+ border: 4px solid #00ff41;
+ padding: 24px;
+ display: flex; flex-direction: column; gap: 8px;
+ transform: rotate(var(--rot, 0deg));
+ }
+ .review-card:nth-child(1) { --rot: -1deg; }
+ .review-card:nth-child(2) { --rot: 1.2deg; }
+ .review-card:nth-child(3) { --rot: -0.8deg; }
+ .review-card:nth-child(4) { --rot: 0.6deg; }
+ .review-card:nth-child(5) { --rot: -1.5deg; }
+ .review-card .review-header { display: flex; justify-content: space-between; align-items: center; }
+ .review-card .review-name { font-weight: 900; font-size: 1.2rem; color: #ffff00; }
+ .review-card .review-date { font-size: 0.8rem; color: #00ff41; }
+ .review-card .review-stars { color: #ffff00; font-size: 1.4rem; letter-spacing: 2px; }
+ .review-card .review-text { font-size: 1rem; border-left: 3px solid #ffff00; padding-left: 12px; margin-top: 4px; color: #ccc; }
+
+ /* FOOTER */
+ footer {
+ border-top: 4px solid #ffff00;
+ padding: 32px 24px;
+ display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;
+ }
+ footer .footer-contact { font-size: 1.4rem; font-weight: 700; }
+ footer .footer-contact a { font-size: 1.6rem; }
+ footer .copy { font-size: 0.9rem; color: #00ff41; }
+
+ /* RESPONSIVE */
+ @media (max-width: 768px) {
+ .container { padding: 16px; }
+ .nav-links { display: none; }
+ .hamburger { display: flex; }
+ .hero h1 { font-size: 2.8rem; }
+ .hero .cta-line { font-size: 1.2rem; padding: 6px 16px; }
+ .feature-list li { font-size: 1rem; padding: 16px; }
+ .review-grid { grid-template-columns: 1fr; }
+ .block-asymmetric { flex-direction: column; }
+ footer { flex-direction: column; align-items: flex-start; }
+ .skew-right, .skew-left { transform: none; }
+ .rotate-neg, .rotate-pos { transform: none; }
+ }
+
+ /* EXTRA RAW TEXTURE */
+ .texture-dots { position: relative; overflow: hidden; }
+ .texture-dots::after {
+ content: "";
+ position: absolute; inset: 0;
+ background-image: radial-gradient(circle, #00ff41 1px, transparent 1px);
+ background-size: 12px 12px;
+ opacity: 0.06;
+ pointer-events: none;
+ }
+ hr { border: none; border-top: 4px solid #00ff41; margin: 24px 0; }
+ .bg-flash { background: #ffff00; color: #111; padding: 2px 8px; font-weight: 900; }
+ .uppercase { text-transform: uppercase; }
+ .mono { font-family: monospace; }
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b05-bh-massage-link">
+  <meta property="og:description" content="t3b05-bh-massage-link에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://banghwa-body-review.mapo-room-guide.xyz/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 39개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0212.html">방화 마사지 링크 비교를 통한 합정 노래방 추천정보 분석</a>
+        <p class="post-item__summary">여러분은 평소 노래방을 선택할 때 어떤 기준을 가장 중요하게 생각하시나요? 방화 마사지 링크와 같은 정보를 찾을 때처럼 노래방 역시 온라인 정보를 먼저 확인하는 경우가 많습니다. 막상 방문하려니 어</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0213.html">방화 마사지 링크 활용 전 확인하는 연남 클럽 추천정보 정리</a>
+        <p class="post-item__summary">정보를 탐색하다 보면 방화 마사지 링크와 같은 다양한 연결 통로를 접하게 됩니다. 연남 지역의 유흥 문화를 즐기기 위해 클럽을 찾는 과정은 일정한 단계를 거치는 것이 안전합니다. 무엇보다 신뢰할 수</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0214.html">방화 마사지 링크 참고 시 고려할 합정 셔츠룸 추천정보 비교</a>
+        <p class="post-item__summary">방화 마사지 링크와 같은 검색 수단을 통해 합정 지역의 유흥 업소를 찾다 보면 선택의 갈림길에 서게 됩니다. 셔츠룸이라는 독특한 시스템은 업소마다 가격 책정 기준이 상이하여 혼란을 줍니다. 합리적인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0215.html">방화 마사지 링크 이용 전 살피는 공덕 가라오케 추천정보 팁</a>
+        <p class="post-item__summary">방화 마사지 링크를 거쳐 공덕 가라오케를 검색하다 보면 많은 이들이 예약 단계에서 실패를 겪습니다. 가장 흔한 실패 지점은 전화나 메시지를 통해 세부 사항을 명확히 확인하지 않고 방문하는 것입니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0216.html">방화 마사지 링크 확인 후 상수 마사지 추천정보 체크리스트</a>
+        <p class="post-item__summary">방화 마사지 링크를 통해 유입된 정보들 속에서 상수 지역의 마사지 샵을 선택할 때는 접근성과 시설 상태를 최우선으로 고려해야 합니다. 특히 상수역 주변의 복잡한 골목 특성상 지리적 이점을 미리 확인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0217.html">방화 마사지 링크 활용과 망원 노래방 추천정보 확인법</a>
+        <p class="post-item__summary">친구들과 갑작스럽게 약속을 잡고 망원 거리를 걷다 보면 어디로 가야 할지 고민될 때가 많습니다. 무작정 문을 열고 들어가기보다는 방화 마사지 링크 등을 통해 얻은 지역 내 평판을 미리 확인하는 것이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0218.html">방화 마사지 링크 찾는 법과 홍대 노래방 추천정보 시간대</a>
+        <p class="post-item__summary">홍대 노래방은 언제나 붐빈다는 오해를 바로잡고 전략적인 방문이 필요합니다. 금요일 저녁 피크 타임에 무작정 방문하면 대기 시간만 길어질 뿐 원하는 환경을 찾기 어렵습니다. 방화 마사지 링크 검색을 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0219.html">방화 마사지 링크 활용한 공덕 셔츠룸 추천정보 선택 조건</a>
+        <p class="post-item__summary">성공적인 방문을 위해서는 명확한 목적 설정과 적절한 인원 구성이 충족되어야 합니다. 방화 마사지 링크를 살펴보는 과정이 지역 탐색의 시작이라면, 이제는 업소의 성격에 맞는 멤버를 꾸리는 것이 중요합</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0220.html">방화 마사지 링크와 연남 유흥 추천정보 비교 분석법</a>
+        <p class="post-item__summary">여러분은 지역 내 수많은 유흥업소를 고를 때 무엇을 가장 우선순위로 두십니까? 방화 마사지 링크를 확인하며 신뢰도를 검증하는 것처럼 유흥 분야도 객관적인 기준이 필요합니다. 단순히 주변의 소문이나 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/interview-002-16bpzik.html">방화 마사지 링크 경험자에게 물어본 현실적인 판단 기준</a>
+        <p class="post-item__summary">백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: 상세 정보 확인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/interview-002-1dpsh5u.html">방화 마사지 링크</a>
+        <p class="post-item__summary">일상의 피로를 해소하고 신체의 긴장을 완화하기 위해 많은 분이 마사지 서비스를 찾고 계십니다. 특히 방화 지역 근처에서 편리하게 이용할 수 있는 전문 업소를 찾는 수요가 꾸준히 증가하는 추세입니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">방화 마사지 정보 안내</a>
+        <p class="post-item__summary">본 페이지는 방화 지역의 마사지 관련 정보를 종합적으로 안내하는 공간입니다. 마사지를 찾기 위한 과정에서 정확한 위치와 서비스 내용을 파악하는 것은 중요합니다. 해당 지역의 특성을 고려할 때, 주변</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">방화 마사지 정보 가이드</a>
+        <p class="post-item__summary">이 문서는 방화 지역을 기반으로 한 마사지 업소에 대한 기본적인 정보와 안내를 제공합니다. 지역 내 마사지는 다양한 형태로 운영되며, 고객은 원하는 서비스 유형에 맞는 업소를 선택할 수 있습니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/myth-001-16bpzik.html">방화 마사지 링크에 관한 흔한 오해, 직접 확인해보니 달랐던 점</a>
+        <p class="post-item__summary">백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: water-server.store</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/myth-001-1dpsh5u.html">방화 마사지 링크에 관한 흔한 오해, 직접 확인해보니 달랐던 점</a>
+        <p class="post-item__summary">최근 방화 마사지 링크라는 키워드가 온라인상에서 자주 검색되고 있습니다. 많은 분이 이러한 링크가 특정 업소의 상세 정보를 담고 있거나 특별한 혜택을 제공할 것이라는 기대를 품고 클릭하곤 합니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">방화 마사지 용어 및 관련 정보 안내</a>
+        <p class="post-item__summary">지역 내에서 마사지 및 신체 케어 서비스와 관련된 용어를 이해하려는 수요가 꾸준히 존재합니다. 특히 방화 지역을 중심으로 한 업종 안내나 관련 서비스의 명칭 해석이 필요할 때, 올바른 정보를 검색하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">방화 마사지 가이드 정보</a>
+        <p class="post-item__summary">지역 내 다양한 마사지 업소를 알아볼 때 정확한 정보를 찾는 것은 중요합니다. 방화 지역에서 서비스를 찾고 계신다면, 업종의 특성과 지역적인 특성을 고려하여 신중히 선택해야 합니다. 올바른 정보를 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">방화 마사지 안내 정보</a>
+        <p class="post-item__summary">방화 지역의 다양한 마사지 업소에 대한 정보를 찾고 계신가요? 해당 지역에서는 많은 분들이 편안한 휴식을 취하기 위해 전문 마사지 서비스를 찾고 있습니다. 각 업소는 고유한 컨셉과 프로그램을 운영하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-001.html">월 3 천 찍고도 쪽박 찬 진짜 이유: 원가율 68% 의 함정과 방화 마사지 링크 의 숨은 변수</a>
+        <p class="post-item__summary">dim_lighting, cluttered_desk, calculator, receipts_pile, stressed_hands, business_failure, night_shift, indoor</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
